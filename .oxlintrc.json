@@ -1,0 +1,290 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "react",
+    "typescript",
+    "oxc"
+  ],
+  "ignorePatterns": [
+    "dist/**"
+  ],
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": [
+      "warn",
+      {
+        "allowConstantExport": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/src/shared/**"
+      ],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "**/entities",
+                  "**/entities/**",
+                  "**/modules",
+                  "**/modules/**",
+                  "**/app",
+                  "**/app/**"
+                ],
+                "message": "Б-8: shared не знає про домен — не імпортує entities, modules, app"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/src/entities/**"
+      ],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "**/modules",
+                  "**/modules/**",
+                  "**/app",
+                  "**/app/**"
+                ],
+                "message": "Б-8: entities не імпортують modules і app"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/src/modules/queue/**"
+      ],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "../project",
+                  "../project/**",
+                  "../../project",
+                  "../../project/**",
+                  "../finance",
+                  "../finance/**",
+                  "../../finance",
+                  "../../finance/**",
+                  "../monitoring",
+                  "../monitoring/**",
+                  "../../monitoring",
+                  "../../monitoring/**",
+                  "../prompts",
+                  "../prompts/**",
+                  "../../prompts",
+                  "../../prompts/**",
+                  "**/app",
+                  "**/app/**"
+                ],
+                "message": "Б-8: модулі не імпортують один одного і app; звʼязок — лише через URL"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/src/modules/project/**"
+      ],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "../queue",
+                  "../queue/**",
+                  "../../queue",
+                  "../../queue/**",
+                  "../finance",
+                  "../finance/**",
+                  "../../finance",
+                  "../../finance/**",
+                  "../monitoring",
+                  "../monitoring/**",
+                  "../../monitoring",
+                  "../../monitoring/**",
+                  "../prompts",
+                  "../prompts/**",
+                  "../../prompts",
+                  "../../prompts/**",
+                  "**/app",
+                  "**/app/**"
+                ],
+                "message": "Б-8: модулі не імпортують один одного і app; звʼязок — лише через URL"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/src/modules/finance/**"
+      ],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "../queue",
+                  "../queue/**",
+                  "../../queue",
+                  "../../queue/**",
+                  "../project",
+                  "../project/**",
+                  "../../project",
+                  "../../project/**",
+                  "../monitoring",
+                  "../monitoring/**",
+                  "../../monitoring",
+                  "../../monitoring/**",
+                  "../prompts",
+                  "../prompts/**",
+                  "../../prompts",
+                  "../../prompts/**",
+                  "**/app",
+                  "**/app/**",
+                  "**/entities",
+                  "**/entities/**"
+                ],
+                "message": "Б-8: адмінський модуль не імпортує інші модулі, entities і app"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/src/modules/monitoring/**"
+      ],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "../queue",
+                  "../queue/**",
+                  "../../queue",
+                  "../../queue/**",
+                  "../project",
+                  "../project/**",
+                  "../../project",
+                  "../../project/**",
+                  "../finance",
+                  "../finance/**",
+                  "../../finance",
+                  "../../finance/**",
+                  "../prompts",
+                  "../prompts/**",
+                  "../../prompts",
+                  "../../prompts/**",
+                  "**/app",
+                  "**/app/**",
+                  "**/entities",
+                  "**/entities/**"
+                ],
+                "message": "Б-8: адмінський модуль не імпортує інші модулі, entities і app"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/src/modules/prompts/**"
+      ],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "../queue",
+                  "../queue/**",
+                  "../../queue",
+                  "../../queue/**",
+                  "../project",
+                  "../project/**",
+                  "../../project",
+                  "../../project/**",
+                  "../finance",
+                  "../finance/**",
+                  "../../finance",
+                  "../../finance/**",
+                  "../monitoring",
+                  "../monitoring/**",
+                  "../../monitoring",
+                  "../../monitoring/**",
+                  "**/app",
+                  "**/app/**",
+                  "**/entities",
+                  "**/entities/**"
+                ],
+                "message": "Б-8: адмінський модуль не імпортує інші модулі, entities і app"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/src/app/**"
+      ],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "**/modules",
+                  "**/modules/**"
+                ],
+                "message": "Б-8: модулі підключаються лише через lazy() у app/routes.tsx"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/src/app/routes.tsx"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ]
+}
